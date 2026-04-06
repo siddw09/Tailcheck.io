@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailCheck | Aircraft Lifecycle Tracker</title>
+    <link rel="stylesheet" href="css/output.css">
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body class="bg-slate-900 text-white min-h-screen">
+
+    <nav class="p-6 border-b border-slate-800 flex justify-between items-center">
+        <h1 class="text-2xl font-bold tracking-tighter text-blue-400">TAILCHECK</h1>
+        <div class="space-x-6 text-sm font-medium">
+            <a href="#" class="hover:text-blue-400 transition">Dashboard</a>
+            <a href="#" class="hover:text-blue-400 transition">Live Map</a>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto mt-20 px-6 text-center">
+        <h2 class="text-5xl font-extrabold mb-4">Track any aircraft's <span class="text-blue-500">history.</span></h2>
+        <p class="text-slate-400 mb-10 text-lg">Enter a tail number to see age, airline, and live flight status.</p>
+
+        <div class="relative max-w-xl mx-auto">
+            <input type="text" id="tailSearch" placeholder="Ex: N123AB or VT-AXR" 
+                class="w-full p-5 rounded-2xl bg-slate-800 border border-slate-700 focus:border-blue-500 focus:outline-none text-xl uppercase tracking-widest">
+            <button onclick="searchAircraft()" 
+                class="absolute right-3 top-3 bottom-3 bg-blue-600 hover:bg-blue-500 px-6 rounded-xl font-bold transition">
+                Search
+            </button>
+        </div>
+
+        <div id="resultArea" class="mt-12 hidden grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fadeIn">
+    <div id="basicInfoCard" class="lg:col-span-1 space-y-6"></div>
+
+    <div class="lg:col-span-2 space-y-6">
+        <div class="bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden relative">
+    
+    <div id="map" class="h-[400px] w-full z-0"></div>
+    
+    <div class="absolute top-4 left-4 z-[1000] bg-slate-900/80 backdrop-blur px-4 py-2 rounded-full border border-slate-700 text-xs font-bold flex items-center gap-2">
+        <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+        LIVE RADAR VIEW
+    </div>
+</div>
+        <div id="flightHistoryCard" class="bg-slate-800 p-6 rounded-3xl border border-slate-700"></div>
+    </div>
+</div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
