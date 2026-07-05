@@ -26,5 +26,5 @@ TailCheck is a sophisticated full-stack web application designed for aviation en
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/TailCheck.git](https://github.com/YOUR_USERNAME/TailCheck.git)
+   git clone [https://github.com/siddw09/TailCheck.git](https://github.com/siddw09/TailCheck.git)
    cd TailCheck
