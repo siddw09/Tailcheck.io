@@ -19,7 +19,11 @@ export type RouteEnrichment = {
   registration: string;
   callsign: string | null;
   operator: string | null;
+  departureAirport: string | null;
+  departureCity: string | null;
   origin: string | null;
+  arrivalAirport: string | null;
+  arrivalCity: string | null;
   destination: string | null;
   remarks: string[];
 };

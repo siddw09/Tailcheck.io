@@ -8,8 +8,10 @@ import { HistoryLog } from "@/components/dashboard/HistoryLog";
 import { LiveRadar } from "@/components/dashboard/LiveRadar";
 import { MetricsGrid } from "@/components/dashboard/MetricsGrid";
 import { SearchBox } from "@/components/dashboard/SearchBox";
+import { Header } from "@/components/dashboard/Header";
 
-const defaultHex = "N90BFD";
+const defaultHex = "";
+const hexPattern = /^[0-9A-Fa-f]{6}$/;
 
 export function DashboardClient() {
   const [query, setQuery] = useState(defaultHex);
@@ -33,7 +35,12 @@ export function DashboardClient() {
     const normalized = nextQuery.trim().toUpperCase();
 
     if (!normalized) {
-      setError("Enter a registration or ICAO hex first.");
+      setError("Enter a 6-character ICAO hex first.");
+      return;
+    }
+
+    if (!hexPattern.test(normalized)) {
+      setError("Use a valid 6-character ICAO hex like ABC123.");
       return;
     }
 
@@ -47,11 +54,24 @@ export function DashboardClient() {
 
   return (
     <div className="space-y-4">
+      <Header
+        feedLabel={
+          error
+            ? "ERROR"
+            : tracking
+              ? tracking.status.toUpperCase()
+              : isPending
+                ? "QUERYING"
+                : "IDLE"
+        }
+        feedTone={error ? "error" : tracking ? (tracking.status === "live" ? "live" : "mock") : isPending ? "idle" : "idle"}
+      />
       <FeedStatusCard
         error={error}
         tracking={tracking}
         query={query}
         isLoading={isPending}
+        isValidationError={Boolean(error && error.startsWith("Use a valid 6-character ICAO hex"))}
         onRetry={() => {
           startTransition(() => {
             void handleSearch(query).catch((searchError: unknown) => {

@@ -21,16 +21,16 @@ export function SearchBox({ value, onChange, onSubmit, isLoading = false }: Sear
         }}
       >
         <div className="space-y-3">
-          <label className="text-[10px] uppercase tracking-[0.45em] text-console-muted">Registration Number</label>
+          <label className="text-[10px] uppercase tracking-[0.45em] text-console-muted">ICAO24 Hex Code</label>
           <Input
-            aria-label="Aircraft registration"
+            aria-label="Aircraft hex"
             value={value}
             onChange={(event) => onChange(event.target.value)}
-            placeholder="N90BFD"
+            placeholder="ABC123"
             className="h-12 rounded-2xl border-white/10 bg-console-panel/60 text-[15px] tracking-[0.26em]"
           />
           <p className="text-xs leading-6 text-slate-400">
-            Tip: try active commercial registrations for better live telemetry odds.
+            Tip: use a 6-character ICAO24 hex code, for example 3C6444.
           </p>
         </div>
         <Button className="h-12 rounded-2xl px-6 text-[15px] font-semibold tracking-wide shadow-[0_0_0_1px_rgba(45,212,191,0.18)]" disabled={isLoading}>

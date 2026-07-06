@@ -1,4 +1,16 @@
-export function Header() {
+type HeaderProps = {
+  feedLabel: string;
+  feedTone: "live" | "mock" | "error" | "idle";
+};
+
+const feedToneClasses: Record<HeaderProps["feedTone"], string> = {
+  live: "text-console-accent",
+  mock: "text-console-muted",
+  error: "text-red-300",
+  idle: "text-console-accent"
+};
+
+export function Header({ feedLabel, feedTone }: HeaderProps) {
   return (
     <header className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,24,48,0.96),rgba(7,17,31,0.95))] px-5 py-4 shadow-glow backdrop-blur-xl sm:px-6">
       <div className="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
@@ -13,7 +25,7 @@ export function Header() {
           </div>
           <div className="rounded-2xl border border-white/10 bg-console-panel/80 px-4 py-3 text-right">
             <p className="text-[10px] uppercase tracking-[0.35em] text-console-muted">Feed Status</p>
-            <p className="mt-1 text-sm font-semibold text-red-300">Feed error</p>
+            <p className={`mt-1 text-sm font-semibold ${feedToneClasses[feedTone]}`}>{feedLabel}</p>
           </div>
         </div>
       </div>

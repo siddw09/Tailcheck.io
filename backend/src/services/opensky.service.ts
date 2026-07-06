@@ -21,17 +21,22 @@ export async function getOpenSkyTelemetry(hex: string): Promise<{
 }> {
   const seed = hashHex(hex);
   const configured = Boolean(env.openSky.username && env.openSky.password);
+  const fallbackLatitude = 33 + (seed % 1200) / 100;
+  const fallbackLongitude = -125 + (seed % 1600) / 100;
+  const fallbackAltitude = 28000 + (seed % 12000);
+  const fallbackSpeed = 380 + (seed % 120);
+  const fallbackTrack = (seed * 7) % 360;
 
   return {
     telemetry: {
       hex,
       callsign: `${hex.toUpperCase().slice(0, 3)}${String(seed % 1000).padStart(3, "0")}`,
-      latitude: 33 + (seed % 1200) / 100,
-      longitude: -125 + (seed % 1600) / 100,
-      altitudeFt: configured ? 34500 : 0,
-      speedKts: configured ? 452 : null,
-      verticalRateFpm: configured ? 0 : null,
-      trackDeg: (seed * 7) % 360,
+      latitude: fallbackLatitude,
+      longitude: fallbackLongitude,
+      altitudeFt: configured ? 34500 : fallbackAltitude,
+      speedKts: configured ? 452 : fallbackSpeed,
+      verticalRateFpm: configured ? 0 : -600 + (seed % 1200),
+      trackDeg: fallbackTrack,
       source: "opensky"
     },
     provider: {

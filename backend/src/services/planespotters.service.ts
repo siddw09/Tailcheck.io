@@ -10,8 +10,8 @@ export async function getPlaneSpottersAsset(hex: string): Promise<{
   return {
     asset: {
       hex,
-      imageUrl: configured ? `https://images.example.com/${hex.toUpperCase()}.jpg` : null,
-      credit: configured ? "PlaneSpotters" : null,
+      imageUrl: configured ? `https://images.example.com/${hex.toUpperCase()}.jpg` : `https://picsum.photos/seed/${hex.toUpperCase()}/800/450`,
+      credit: configured ? "PlaneSpotters" : "Fallback aircraft placeholder",
       source: "planespotters"
     },
     provider: {
