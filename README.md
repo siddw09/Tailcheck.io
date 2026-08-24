@@ -17,7 +17,7 @@ A full-stack aircraft tracking monorepo with:
 
 - `backend`: Express + TypeScript API layer
 - `frontend`: Next.js App Router dashboard with Tailwind and shadcn-friendly primitives
-- `shared`: Zod schemas and shared TypeScript types
+- `shared`: Zod schemas & shared typescript types.
 
 * **APIs Integrated:**
     * **Aviationstack API:** Static aircraft data and flight history.
