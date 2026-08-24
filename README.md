@@ -27,10 +27,3 @@ A full-stack aircraft tracking monorepo with:
 
 1. Install dependencies with `npm install`.
 2. Start development with `npm run dev`.
-##  Installation & Setup
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/siddw09/TailCheck.git
-   cd TailCheck
-
