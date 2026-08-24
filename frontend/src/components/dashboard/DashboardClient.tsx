@@ -81,7 +81,7 @@ export function DashboardClient() {
         }}
       />
       <div className="rounded-[18px] border border-white/10 bg-console-panel/40 p-3 text-xs text-console-muted">
-        Backend is live through the same frontend origin. API calls are proxied by Next.js rewrites.
+        Backend is live through the same frontend origin. API calls are proxied by siddhesh with Next.js.
       </div>
       <div className="space-y-4">
         <SearchBox
